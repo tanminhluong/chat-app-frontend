@@ -10,11 +10,11 @@ if (process.env.NODE_ENV === "production") disableReactDevTools();
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <BrowserRouter>
-    <ChatProvider>
-      <ChakraProvider>
+  <ChakraProvider>
+    <BrowserRouter>
+      <ChatProvider>
         <App />
-      </ChakraProvider>
-    </ChatProvider>
-  </BrowserRouter>
+      </ChatProvider>
+    </BrowserRouter>
+  </ChakraProvider>
 );
