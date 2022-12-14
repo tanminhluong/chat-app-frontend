@@ -29,6 +29,7 @@ import NotificationBadge, { Effect } from "react-notification-badge";
 import ChatLoading from "../ChatLoading";
 import { getSender } from "../../config/ChatLogics";
 import UserListItem from "../UserAvatar/UserListItem";
+import { publicRequest } from "../../config/publicConfig";
 
 const SideDrawer = () => {
   const [search, setSearch] = useState("");
@@ -72,7 +73,10 @@ const SideDrawer = () => {
           Authorization: `Bearer ${user.token}`,
         },
       };
-      const { data } = await axios.get(`/api/users?search=${search}`, config);
+      const { data } = await publicRequest.get(
+        `/api/users?search=${search}`,
+        config
+      );
 
       setLoading(false);
       setSearchResult(data);
@@ -97,7 +101,11 @@ const SideDrawer = () => {
           Authorization: `Bearer ${user.token}`,
         },
       };
-      const { data } = await axios.post("/api/chats", { userId }, config);
+      const { data } = await publicRequest.post(
+        "/api/chats",
+        { userId },
+        config
+      );
       if (!chats.find((c) => c._id === data._id)) setChats([data, ...chats]);
       setSelectedChat(data);
       setLoadingChat(false);
