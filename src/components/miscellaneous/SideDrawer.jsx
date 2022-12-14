@@ -96,7 +96,7 @@ const SideDrawer = () => {
     try {
       setLoadingChat(true);
       const config = {
-        "Content-type": "application/json",
+        "Content-Type": "application/json",
         headers: {
           Authorization: `Bearer ${user.token}`,
         },
