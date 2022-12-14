@@ -11,6 +11,7 @@ import {
 import React, { useState } from "react";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
+import { publicRequest } from "../config/publicConfig";
 
 const SignUp = () => {
   const [name, setName] = useState("");
@@ -107,7 +108,7 @@ const SignUp = () => {
         },
       };
 
-      const { data } = await axios.post(
+      const { data } = await publicRequest.post(
         "/api/users/register",
         {
           name,

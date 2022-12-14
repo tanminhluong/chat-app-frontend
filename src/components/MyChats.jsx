@@ -4,6 +4,7 @@ import axios from "axios";
 
 import React, { useEffect, useState } from "react";
 import { getSender } from "../config/ChatLogics";
+import { publicRequest } from "../config/publicConfig";
 import { ChatState } from "../Context/ChatProvider";
 import ChatLoading from "./ChatLoading";
 import GroupChatModal from "./miscellaneous/GroupChatModal";
@@ -21,7 +22,7 @@ const MyChats = ({ fetchAgain }) => {
         },
       };
 
-      const { data } = await axios.get(`/api/chats`, config);
+      const { data } = await publicRequest.get(`/api/chats`, config);
 
       setChats(data);
     } catch (error) {

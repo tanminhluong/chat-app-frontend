@@ -11,6 +11,7 @@ import {
 import axios from "axios";
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
+import { publicRequest } from "../config/publicConfig";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -47,7 +48,7 @@ const Login = () => {
         },
       };
 
-      const { data } = await axios.post(
+      const { data } = await publicRequest.post(
         "/api/users/login",
         {
           email,

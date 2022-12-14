@@ -19,6 +19,7 @@ import "./style.css";
 import io from "socket.io-client";
 import Lottie from "react-lottie";
 import animationData from "../animations/typing.json";
+import { publicRequest } from "../config/publicConfig";
 
 const ENDPOINT = "https://chat-api-5eit.onrender.com";
 var socket, selectedChatCompare;
@@ -59,7 +60,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
         },
       };
       setLoading(true);
-      const { data } = await axios.get(
+      const { data } = await publicRequest.get(
         `/api/messages/${selectedChat._id}`,
         config
       );
@@ -121,7 +122,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
           },
         };
         setNewMessage("");
-        const { data } = await axios.post(
+        const { data } = await publicRequest.post(
           `/api/messages/`,
           {
             content: newMessage,
