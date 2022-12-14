@@ -93,6 +93,9 @@ const GroupChatModal = ({ children }) => {
     try {
       const config = {
         headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+
           Authorization: `Bearer ${user.token}`,
         },
       };

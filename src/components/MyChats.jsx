@@ -18,6 +18,9 @@ const MyChats = ({ fetchAgain }) => {
     try {
       const config = {
         headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+
           Authorization: `Bearer ${user.token}`,
         },
       };

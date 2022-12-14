@@ -56,6 +56,9 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
     try {
       const config = {
         headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+
           Authorization: `Bearer ${user.token}`,
         },
       };
@@ -117,7 +120,9 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
       try {
         const config = {
           headers: {
+            Accept: "application/json",
             "Content-Type": "application/json",
+
             Authorization: `Bearer ${user.token}`,
           },
         };
