@@ -21,7 +21,7 @@ import Lottie from "react-lottie";
 import animationData from "../animations/typing.json";
 import { publicRequest } from "../config/publicConfig";
 
-const ENDPOINT = "https://chat-app-byx2.onrender.com";
+const ENDPOINT = "http://localhost:5000";
 var socket, selectedChatCompare;
 
 const SingleChat = ({ fetchAgain, setFetchAgain }) => {
