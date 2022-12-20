@@ -21,7 +21,7 @@ import Lottie from "react-lottie";
 import animationData from "../animations/typing.json";
 import { publicRequest } from "../config/publicConfig";
 
-const ENDPOINT = "http://localhost:5000";
+const ENDPOINT = "https://chat-app-byx2.onrender.com";
 var socket, selectedChatCompare;
 
 const SingleChat = ({ fetchAgain, setFetchAgain }) => {
@@ -63,7 +63,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
         },
       };
       setLoading(true);
-      const { data } = await axios.get(
+      const { data } = await publicRequest.get(
         `/api/messages/${selectedChat._id}`,
         config
       );
@@ -127,7 +127,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
           },
         };
         setNewMessage("");
-        const { data } = await axios.post(
+        const { data } = await publicRequest.post(
           `/api/messages/`,
           {
             content: newMessage,

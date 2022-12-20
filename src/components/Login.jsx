@@ -51,7 +51,7 @@ const Login = () => {
         },
       };
 
-      const { data } = await axios.post(
+      const { data } = await publicRequest.post(
         "/api/users/login",
         {
           email,
