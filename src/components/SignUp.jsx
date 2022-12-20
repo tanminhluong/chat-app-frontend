@@ -109,7 +109,7 @@ const SignUp = () => {
         },
       };
 
-      const { data } = await publicRequest.post(
+      const { data } = await axios.post(
         "/api/users/register",
         {
           name,

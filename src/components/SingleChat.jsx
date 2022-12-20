@@ -63,7 +63,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
         },
       };
       setLoading(true);
-      const { data } = await publicRequest.get(
+      const { data } = await axios.get(
         `/api/messages/${selectedChat._id}`,
         config
       );
@@ -127,7 +127,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
           },
         };
         setNewMessage("");
-        const { data } = await publicRequest.post(
+        const { data } = await axios.post(
           `/api/messages/`,
           {
             content: newMessage,
