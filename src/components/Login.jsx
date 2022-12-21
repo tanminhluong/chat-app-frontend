@@ -29,13 +29,13 @@ const Login = () => {
 
   //
 
-  const submitHandler = async (e) => {
+  const submitHandler = async () => {
     setLoading(true);
     if (!email || !password) {
       toast({
         title: "Please fill all the fields",
         status: "warning",
-        duration: 9000,
+        duration: 5000,
         isClosable: true,
         position: "bottom",
       });
@@ -60,7 +60,7 @@ const Login = () => {
         config
       );
       toast({
-        title: "Registation succesful",
+        title: "Login succesful",
 
         status: "success",
         duration: 9000,
