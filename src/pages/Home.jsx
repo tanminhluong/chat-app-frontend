@@ -20,7 +20,7 @@ const Home = () => {
     if (user) {
       history.push("/chats");
     }
-  });
+  }, [history]);
 
   return (
     <Container maxW="xl" centerContent>

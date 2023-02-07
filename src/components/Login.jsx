@@ -19,9 +19,9 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState();
   const [show, setShow] = useState(false);
+  const { setUser } = ChatState();
   const history = useHistory();
   const toast = useToast();
-  const { setUser } = ChatState();
 
   const handleShow = () => {
     setShow(!show);
@@ -29,7 +29,8 @@ const Login = () => {
 
   //
 
-  const submitHandler = async () => {
+  const submitHandler = async (e) => {
+    e.preventDefault();
     setLoading(true);
     if (!email || !password) {
       toast({
@@ -46,7 +47,6 @@ const Login = () => {
     try {
       const config = {
         headers: {
-          Accept: "application/json",
           "Content-Type": "application/json",
         },
       };
@@ -59,6 +59,7 @@ const Login = () => {
         },
         config
       );
+
       toast({
         title: "Login succesful",
 
@@ -69,7 +70,7 @@ const Login = () => {
       });
 
       localStorage.setItem("userInfo", JSON.stringify(data));
-
+      setUser(data);
       setLoading(false);
       history.push("/chats");
     } catch (error) {

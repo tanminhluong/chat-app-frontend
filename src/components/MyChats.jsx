@@ -11,16 +11,14 @@ import GroupChatModal from "./miscellaneous/GroupChatModal";
 
 const MyChats = ({ fetchAgain }) => {
   const toast = useToast();
-  const { selectedChat, user, chats, setSelectedChat, setChats } = ChatState();
-  const [loggedUser, setLoggedUser] = useState();
+  const [loggedUser, setLoggedUser] = useState({});
+
+  const { selectedChat, setSelectedChat, user, chats, setChats } = ChatState();
 
   const fetchChats = async () => {
     try {
       const config = {
         headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-
           Authorization: `Bearer ${user.token}`,
         },
       };
@@ -41,10 +39,12 @@ const MyChats = ({ fetchAgain }) => {
   };
 
   useEffect(() => {
-    // setLoggedUser(JSON.parse(localStorage.getItem("userInfo")));
-    setLoggedUser(user);
+    setLoggedUser(JSON.parse(localStorage.getItem("userInfo")));
+
     fetchChats();
+    // eslint-disable-next-line
   }, [fetchAgain]);
+
   return (
     <Box
       display={{ base: selectedChat ? "none" : "left", md: "flex" }}
@@ -102,7 +102,7 @@ const MyChats = ({ fetchAgain }) => {
               >
                 <Text>
                   {!chat.isGroupChat
-                    ? getSender(user, chat.users)
+                    ? getSender(loggedUser, chat.users)
                     : chat.chatName}
                 </Text>
                 {chat.latestMessage && (
